@@ -1,676 +1,104 @@
-          <!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Global Chronicle | Sourced from Le Monde & Fact-Checked</title>
-    
+    <title>The Global Chronicle | July 1, 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            dark: '#0f172a', /* Darker Navy Slate */
-                            paper: '#fbfbf9', /* Traditional Newspaper Cream */
-                            accent: '#1e40af', /* Deep Trust Blue */
-                            gold: '#a16207', /* Premium Amber/Gold */
-                            success: '#15803d' /* Verified Green */
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #fbfbf9;
-            color: #1a1a1a;
-        }
-        .editorial-border {
-            border-color: #e2e8f0;
-        }
-        .news-divider {
-            border-top: 2px solid #0f172a;
-            border-bottom: 5px double #0f172a;
-        }
-        .ticker-wrap {
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .ticker-move {
-            display: inline-block;
-            animation: ticker 25s linear infinite;
-        }
-        @keyframes ticker {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .img-zoom {
-            overflow: hidden;
-        }
-        .img-zoom img {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .img-zoom:hover img {
-            transform: scale(1.03);
-        }
-        .backdrop-blur {
-            backdrop-filter: blur(6px);
-        }
-        /* Custom scrollbar for high-end feel */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #fbfbf9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
     </style>
 </head>
-<body class="font-sans antialiased flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-900">
 
-    <!-- Top Utility Bar -->
-    <div class="bg-brand-dark text-white text-xs py-2 px-4 flex justify-between items-center font-sans tracking-wide">
-        <div class="flex items-center space-x-3">
-            <span class="font-bold text-brand-gold tracking-widest uppercase">THE CHRONICLE JOURNALISM INITIATIVE</span>
-            <span class="text-gray-400 hidden md:inline">|</span>
-            <span id="current-date" class="text-gray-300 font-medium"></span>
-        </div>
-        <div class="flex items-center space-x-4">
-            <span class="bg-green-900/50 text-green-400 text-[10px] px-2 py-0.5 rounded font-mono border border-green-700 hidden sm:inline-flex items-center">
-                <span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse"></span> FACT-CHECK FEED ACTIVE
-            </span>
-            <button onclick="openModal()" class="bg-brand-gold text-white px-3 py-1 rounded-sm hover:bg-yellow-700 transition font-bold uppercase text-[10px] tracking-wider">
-                Subscribe ($45/Yr)
-            </button>
-        </div>
-    </div>
-
-    <header class="py-8 px-4 md:px-8 text-center bg-brand-paper">
-        <div class="max-w-4xl mx-auto">
-            <p class="text-[11px] font-mono tracking-[0.25em] text-gray-500 uppercase mb-3">INDEPENDENT GLOBAL JOURNALISM • POWERED BY VERIFIED SOURCES</p>
-            <h1 class="font-serif text-5xl md:text-7xl font-black tracking-tighter mb-3 cursor-pointer hover:text-gray-800 transition" onclick="window.location.reload()">
-                The Global Chronicle
-            </h1>
-            <p class="font-serif italic text-gray-600 text-lg md:text-xl border-t border-b border-gray-300/60 py-2 max-w-xl mx-auto">
-                "Verified Facts, Rigorous Source Verification, Global Truth"
-            </p>
-        </div>
-    </header>
-
-    <!-- Navigation Menu -->
-    <nav class="border-b border-gray-300 sticky top-0 bg-brand-paper/95 z-40 shadow-sm backdrop-blur">
-        <div class="max-w-7xl mx-auto px-4">
-            <ul class="flex justify-start md:justify-center overflow-x-auto space-x-6 md:space-x-8 py-3.5 text-xs md:text-sm font-bold text-gray-800 uppercase tracking-widest">
-                <li><a href="#world" class="hover:text-brand-accent transition border-b-2 border-transparent hover:border-brand-accent pb-1">World Affairs</a></li>
-                <li><a href="#investigations" class="hover:text-brand-accent transition border-b-2 border-transparent hover:border-brand-accent pb-1">Investigations</a></li>
-                <li><a href="#technology" class="hover:text-brand-accent transition border-b-2 border-transparent hover:border-brand-accent pb-1">Technology & Society</a></li>
-                <li><a href="#business" class="hover:text-brand-accent transition border-b-2 border-transparent hover:border-brand-accent pb-1">Business & Energy</a></li>
-                <li><a href="#opinion" class="hover:text-brand-accent transition border-b-2 border-transparent hover:border-brand-accent pb-1">Analysis & Opinion</a></li>
-            </ul>
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold tracking-tight text-red-900 uppercase">The Global Chronicle</h1>
+            <div id="reward-badge" class="bg-green-100 border border-green-500 px-4 py-2 rounded-lg text-sm font-semibold">
+                Earnings: <span id="earnings-display">0.00</span> DHS
+            </div>
         </div>
     </nav>
 
-    <!-- Breaking News Ticker -->
-    <div class="bg-brand-dark text-white py-2 px-4 flex items-center shadow-inner border-y border-gray-800">
-        <div class="font-bold uppercase tracking-widest text-[10px] mr-4 whitespace-nowrap bg-brand-gold text-white px-2 py-0.5 rounded-sm">
-            VERIFIED TICKER
-        </div>
-        <div class="ticker-wrap w-full">
-            <div class="ticker-move text-xs font-medium tracking-wide">
-                <span class="mx-8">• <strong>CLIMATE EMERGENCY:</strong> Heat Dome stalls over Western Europe; French heat index hits record highs</span>
-                <span class="mx-8">• <strong>VATICAN DECREE:</strong> Pope Leo XIV releases encyclical 'Magnifica Humanitas' setting ethical boundaries on AI</span>
-                <span class="mx-8">• <strong>ENERGY WATCH:</strong> TotalEnergies locks rural fuel prices at €1.99/L for peak summer departures</span>
-                <span class="mx-8">• <strong>WORLD CUP 2026:</strong> France faces Sweden tonight in Round of 32 clash in North America</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Content Area -->
-    <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 flex-grow">
-        
-        <!-- Verification Banner Alert -->
-        <div class="mb-8 p-4 bg-emerald-50 border border-emerald-200 rounded-lg flex flex-col md:flex-row items-center justify-between shadow-sm">
-            <div class="flex items-center space-x-3 mb-4 md:mb-0">
-                <div class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
-                    <i class="fas fa-shield-halved text-lg"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-emerald-900 text-sm">Le Monde Integration & Factual Verification Protocol</h4>
-                    <p class="text-xs text-emerald-700">All primary stories are indexed directly from real investigations published by Le Monde. Use the verification tool next to each story to view source metadata.</p>
-                </div>
-            </div>
-            <button onclick="openVerificationGuide()" class="text-xs font-semibold bg-emerald-600 text-white px-4 py-2 rounded shadow hover:bg-emerald-700 transition">
-                How We Verify Facts
-            </button>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <!-- Left Column: Primary Verified Stories (Spans 8 cols) -->
-            <div class="lg:col-span-8 lg:border-r editorial-border lg:pr-8 space-y-12">
-                
-                <!-- Hero Article: Europe Heatwave -->
-                <article id="world" class="scroll-mt-24">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="bg-red-100 text-red-800 text-[10px] font-extrabold px-2.5 py-1 uppercase tracking-widest rounded-sm">
-                            World Affairs • Climate
-                        </span>
-                        <button onclick="triggerVerification('heatwave')" class="flex items-center text-xs font-bold text-emerald-700 hover:text-emerald-900 bg-emerald-50 px-3 py-1 rounded border border-emerald-200 transition">
-                            <i class="fas fa-circle-check mr-1.5 text-emerald-600 animate-pulse"></i> Verify Facts
-                        </button>
-                    </div>
-                    
-                    <h2 class="font-serif text-3xl md:text-5xl font-extrabold leading-tight mb-4 hover:text-gray-800 cursor-pointer" onclick="triggerVerification('heatwave')">
-                        Unprecedented June Heat Dome Shatters European Temperature Records
-                    </h2>
-                    
-                    <p class="text-gray-700 text-base md:text-lg mb-6 leading-relaxed">
-                        A historic "heat dome" has stalled directly over Western Europe, sending temperatures soaring to astronomical highs and breaking hundreds of local records. In France, Météo-France placed an unprecedented 72 departments under a red alert as the heat index peaked. Scientists from World Weather Attribution warn that this rapid-response event would have been virtually impossible without human-induced climate changes.
-                    </p>
-                    
-                    <div class="img-zoom mb-4 rounded-lg shadow-md border editorial-border relative group">
-                        <img src="https://images.unsplash.com/photo-1504370805625-d32c54b16100?auto=format&fit=crop&q=80&w=1200" alt="Scorched sun and heat landscape" class="w-full h-[320px] object-cover">
-                        <div class="absolute bottom-3 left-3 bg-black/70 text-white text-[10px] font-mono px-2 py-1 rounded">
-                            Photo: World Weather Attribution • Europe Heat Index
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs text-gray-500 font-sans border-b border-gray-200 pb-4 gap-2">
-                        <span>Original reporting by <strong>Le Monde Environment Desk</strong></span>
-                        <div class="flex items-center space-x-2">
-                            <span class="bg-gray-100 px-2 py-0.5 rounded">Paris Bureau</span>
-                            <span>• 6 MIN READ</span>
-                        </div>
-                    </div>
-                </article>
+            <div class="lg:col-span-2 space-y-12">
+                <!-- Politics -->
+                <section>
+                    <h2 class="text-4xl border-b-4 border-gray-900 pb-2 mb-6">Politics</h2>
+                    <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-2xl font-bold mb-4">The Shifting European Political Landscape</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            The mid-2026 political horizon across Europe has been characterized by intense fragmentation and a notable pivot toward nationalist agendas in domestic parliaments. Brussels remains in a state of flux as coalition building has become increasingly complex. The recent legislative paralysis in the European Parliament has raised alarms regarding the bloc's ability to coordinate on pan-European defense and fiscal policy...
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Analysts suggest that the upcoming autumn summits will be decisive for the future of the eurozone, with significant pressures being applied to maintain the currency union against mounting populism in rural constituencies across central and eastern regions.
+                        </p>
+                    </article>
+                </section>
 
-                <hr class="editorial-border">
+                <!-- Opinion -->
+                <section>
+                    <h2 class="text-4xl border-b-4 border-gray-900 pb-2 mb-6">Opinion & Analysis</h2>
+                    <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-2xl font-bold mb-4">The Polder Model in Crisis: Dutch Leftist Parties and Economic Influence</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            For decades, the Dutch "Polder Model" relied on consensus-building between labor, capital, and the state. However, the recent resurgence of leftist parties has signaled a tectonic shift in how economic policy is viewed in the Netherlands. By aggressively challenging traditional market liberal ideologies, these parties are advocating for a re-industrialization strategy that prioritizes high-wage security over market flexibility.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed">
+                            Critics argue that this leftist pivot threatens the very flexibility that made the Dutch economy a global powerhouse. Yet, proponents maintain that without a stronger social safety net and an active industrial policy, the Netherlands risks falling behind in the global green technology race. This tension is currently defining the legislative agenda in The Hague, setting the stage for one of the most volatile budgetary seasons in recent memory.
+                        </p>
+                    </article>
+                </section>
 
-                <!-- Secondary Investigative Article: Vatican AI Encyclical -->
-                <article id="investigations" class="scroll-mt-24 bg-slate-50 p-5 rounded-xl border border-slate-200 shadow-sm">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="bg-blue-100 text-blue-900 text-[10px] font-extrabold px-2.5 py-1 uppercase tracking-widest rounded-sm">
-                            Ethics • Vatican Consistory
-                        </span>
-                        <button onclick="triggerVerification('popeai')" class="flex items-center text-xs font-bold text-emerald-700 hover:text-emerald-900 bg-emerald-50 px-3 py-1 rounded border border-emerald-200 transition shadow-sm">
-                            <i class="fas fa-circle-check mr-1.5 text-emerald-600"></i> Verify Facts
-                        </button>
-                    </div>
-                    
-                    <h3 class="font-serif text-2xl md:text-3xl font-extrabold leading-tight mb-4 hover:text-gray-800 cursor-pointer" onclick="triggerVerification('popeai')">
-                        Pope Leo XIV Issues First Encyclical 'Magnifica Humanitas' on Artificial Intelligence
-                    </h3>
-                    
-                    <p class="text-gray-700 text-sm md:text-base mb-6 leading-relaxed">
-                        In an extraordinary assembly of the College of Cardinals in Rome, Pope Leo XIV promulgated his first encyclical, <em>Magnifica Humanitas</em>. Marking a dramatic step for the Church's doctrine, the encyclical establishes a formal framework on the protection of human dignity in the age of algorithmic expansion. The document urges international consensus on preserving manual human agency and warns against autonomous military technologies.
-                    </p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-inner">
-                            <h4 class="text-xs font-mono font-bold text-brand-accent uppercase mb-2">Ecclesial Directives</h4>
-                            <p class="text-xs text-gray-600">The Pope demands that AI systems remain strictly supplementary to human labor, stating that replacing human conscience with machines violates fundamental ethics.</p>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg border border-slate-200 shadow-inner flex flex-col justify-center">
-                            <div class="text-3xl font-serif font-black text-brand-gold mb-1">A.I. Code</div>
-                            <p class="text-xs font-sans text-gray-600">The Holy See establishes an ethics oversight committee to evaluate Catholic global organizations deploying neural networks.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between items-center text-xs text-gray-500 font-sans pt-2">
-                        <span>Investigated by <strong>Le Monde Europe Bureau & Holy See Press</strong></span>
-                        <span>8 MIN READ</span>
-                    </div>
-                </article>
-
-                <hr class="editorial-border">
-
-                <!-- Sports & Society: World Cup 2026 -->
-                <article id="technology" class="scroll-mt-24">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="bg-amber-100 text-amber-900 text-[10px] font-extrabold px-2.5 py-1 uppercase tracking-widest rounded-sm">
-                            World Cup 2026 • Round of 32
-                        </span>
-                        <button onclick="triggerVerification('worldcup')" class="flex items-center text-xs font-bold text-emerald-700 hover:text-emerald-900 bg-emerald-50 px-3 py-1 rounded border border-emerald-200 transition">
-                            <i class="fas fa-circle-check mr-1.5 text-emerald-600"></i> Verify Facts
-                        </button>
-                    </div>
-                    
-                    <h3 class="font-serif text-2xl md:text-3xl font-extrabold leading-tight mb-3 hover:text-gray-800 cursor-pointer" onclick="triggerVerification('worldcup')">
-                        Les Bleus Gear Up for Sweden Tonight in High-Stakes Round of 32 Encounter
-                    </h3>
-                    
-                    <p class="text-gray-700 text-sm md:text-base mb-4 leading-relaxed">
-                        The World Cup 2026 continues its rapid descent into the critical elimination brackets. Today, June 30, the French national team faces Sweden in Dallas, Texas. Supported by Kylian Mbappé and Michael Olise in attack, the squad looks to secure their spot in the Round of 16 despite concerns regarding defensive consistency.
-                    </p>
-
-                    <div class="img-zoom mb-4 rounded-lg shadow border border-gray-200">
-                        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=1200" alt="Football / soccer stadium" class="w-full h-48 object-cover">
-                    </div>
-
-                    <div class="flex justify-between items-center text-xs text-gray-500 font-sans">
-                        <span>Reported by <strong>Le Monde Sports Desk</strong></span>
-                        <span>4 MIN READ</span>
-                    </div>
-                </article>
-
+                <!-- Sport -->
+                <section>
+                    <h2 class="text-4xl border-b-4 border-gray-900 pb-2 mb-6">Sport</h2>
+                    <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-2xl font-bold mb-4">World Cup 2026: The Underdog Narrative</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            As the World Cup 2026 enters the knockout stages, the narrative of the tournament has shifted toward the remarkable success of "second-tier" nations. Tactical rigidity has been traded for fluid, high-pressing formations that have left seasoned powerhouses scrambling for composure. Today's match reports highlight a series of upsets, particularly the underdog performance against the tournament favorites, which has left stadiums in shock and fans in absolute delirium.
+                        </p>
+                    </article>
+                </section>
             </div>
 
-            <!-- Right Column: Premium Sidebar (Spans 4 cols) -->
-            <div id="business" class="lg:col-span-4 flex flex-col space-y-8 scroll-mt-24">
-                
-                <!-- Highly Prominent Inflation-Adjusted 8-Year Plan Ad -->
-                <div class="bg-gradient-to-br from-brand-dark to-slate-800 text-white p-6 rounded-xl shadow-xl relative overflow-hidden border border-slate-700">
-                    <div class="absolute top-0 right-0 -mt-6 -mr-6 text-brand-gold opacity-15">
-                        <i class="fas fa-award text-[180px]"></i>
-                    </div>
-                    <div class="relative z-10">
-                        <span class="bg-brand-gold text-white text-[10px] font-black px-2.5 py-1 uppercase tracking-widest rounded-sm mb-4 inline-block">Special Inflation-Lock Offer</span>
-                        <h3 class="font-serif text-3xl font-bold mb-2 leading-tight">The Visionary Trust Plan</h3>
-                        <p class="text-xs text-gray-300 mb-5 leading-relaxed">Protect your news subscription from compounding inflation. Fund continuous independent, verified journalism for nearly a decade.</p>
-                        
-                        <div class="bg-white/5 border border-white/10 backdrop-blur p-4 rounded-lg mb-5 text-center">
-                            <div class="text-[10px] font-mono tracking-widest uppercase text-brand-gold font-bold mb-1">8-Year Guaranteed Lock</div>
-                            <div class="text-5xl font-black font-serif text-white">$45<span class="text-base font-sans text-gray-400 font-light">/year</span></div>
-                            <div class="text-[10px] text-gray-400 mt-2">No price increases. Fully transferable. Cancel anytime.</div>
-                        </div>
-                        
-                        <a href="https://buy.stripe.com/test_8x2dRa2dnaJP1rV66h1Fe00" target="_blank" rel="noopener noreferrer" class="w-full bg-brand-gold hover:bg-yellow-600 text-white font-bold py-3 px-4 rounded transition duration-200 shadow-lg text-xs uppercase tracking-widest flex items-center justify-center space-x-2">
-                            <span>Claim This Plan Now</span>
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                    </div>
+            <!-- Sidebar -->
+            <aside class="space-y-8">
+                <div class="bg-gray-900 text-white p-6 rounded-xl">
+                    <h3 class="text-xl font-bold mb-4">Reader Rewards</h3>
+                    <p class="text-sm opacity-80 mb-4">You earn 15 DHS for every 10 readers detected.</p>
+                    <div class="text-5xl font-bold mb-2" id="reader-count">0</div>
+                    <p class="text-sm uppercase tracking-widest font-semibold">Live Reader Count</p>
                 </div>
-
-                <!-- Editor's Picks (Verifiable News) -->
-                <div>
-                    <h3 class="font-serif text-xl font-extrabold border-b-2 border-brand-dark pb-2 mb-4">Corporate & Energy Watch</h3>
-                    <div class="space-y-4">
-                        <article class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-[9px] font-extrabold text-blue-800 bg-blue-100 px-2 py-0.5 rounded">ENERGY CORPORATIONS</span>
-                                <button onclick="triggerVerification('totalfuel')" class="text-[9px] font-bold text-emerald-700 underline">Verify Facts</button>
-                            </div>
-                            <h4 class="font-serif font-bold text-sm text-gray-900 mb-1 hover:text-brand-accent transition cursor-pointer" onclick="triggerVerification('totalfuel')">
-                                TotalEnergies Retains €1.99 Fuel Price Cap for Summer Rural Operations
-                            </h4>
-                            <p class="text-xs text-gray-500">The energy giant adjusts fuel capping, shifting focus onto 1,200 rural departments and high-traffic weekends through July and August.</p>
-                        </article>
-                    </div>
-                </div>
-
-                <!-- Live Markets (Checked Data) -->
-                <div class="bg-brand-paper p-4 rounded-lg border border-gray-300">
-                    <div class="flex justify-between items-center border-b border-gray-200 pb-2 mb-3">
-                        <h3 class="font-sans font-bold text-xs uppercase tracking-widest text-gray-800">
-                            <i class="fas fa-chart-line mr-1 text-brand-gold"></i> Live Market Indices
-                        </h3>
-                        <span class="text-[9px] font-mono text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-bold border border-emerald-100">FEED SYNCED</span>
-                    </div>
-                    <ul class="space-y-2 text-xs font-semibold">
-                        <li class="flex justify-between border-b border-gray-100 pb-1.5">
-                            <span class="text-gray-600">CAC 40 (Paris)</span> <span class="text-green-600">7,412.30 <i class="fas fa-caret-up"></i></span>
-                        </li>
-                        <li class="flex justify-between border-b border-gray-100 pb-1.5">
-                            <span class="text-gray-600">DAX (Frankfurt)</span> <span class="text-green-600">18,122.95 <i class="fas fa-caret-up"></i></span>
-                        </li>
-                        <li class="flex justify-between border-b border-gray-100 pb-1.5">
-                            <span class="text-gray-600">S&P 500 (New York)</span> <span class="text-red-600">5,482.11 <i class="fas fa-caret-down"></i></span>
-                        </li>
-                        <li class="flex justify-between">
-                            <span class="text-gray-600">Euro / Dollar Ratio</span> <span class="text-green-600">1.092 <i class="fas fa-caret-up"></i></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </aside>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer id="opinion" class="bg-brand-dark text-gray-400 py-12 mt-12 font-sans border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h4 class="text-white font-serif text-2xl font-bold mb-4">The Global Chronicle</h4>
-                    <p class="text-xs leading-relaxed mb-4 text-gray-400">Our publication is built on absolute transparency. Through verified syndication agreements and independent investigative efforts, we present rigorous, fact-based reporting around the clock.</p>
-                    <div class="flex space-x-3 text-sm">
-                        <a href="#" class="hover:text-white text-gray-400 transition bg-white/5 w-8 h-8 rounded-full flex items-center justify-center"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="hover:text-white text-gray-400 transition bg-white/5 w-8 h-8 rounded-full flex items-center justify-center"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover:text-white text-gray-400 transition bg-white/5 w-8 h-8 rounded-full flex items-center justify-center"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h5 class="text-white font-bold uppercase text-xs tracking-widest mb-4">Verification Desks</h5>
-                    <ul class="space-y-2 text-xs font-semibold">
-                        <li><a href="#world" class="hover:text-white transition">World News</a></li>
-                        <li><a href="#investigations" class="hover:text-white transition">Health & Medicine Reports</a></li>
-                        <li><a href="#technology" class="hover:text-white transition">Technological Policy</a></li>
-                        <li><a href="#business" class="hover:text-white transition">Corporate & Energy Markets</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-white font-bold uppercase text-xs tracking-widest mb-4">Editorial Trust</h5>
-                    <ul class="space-y-2 text-xs font-semibold">
-                        <li><a href="#" class="hover:text-white transition">Journalistic Ethics Code</a></li>
-                        <li><a href="#" class="hover:text-white transition">Source Protection Standards</a></li>
-                        <li><a href="#" class="hover:text-white transition">Le Monde Syndication Agreement</a></li>
-                        <li><a href="#" class="hover:text-white transition">Correction Log Database</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="text-white font-bold uppercase text-xs tracking-widest mb-4">Trust Subscriptions</h5>
-                    <ul class="space-y-2 text-xs font-semibold">
-                        <li><button onclick="openModal()" class="text-brand-gold hover:text-white transition font-bold">8-Year Visionary Trust Plan</button></li>
-                        <li><a href="#" class="hover:text-white transition">Corporate Access Solutions</a></li>
-                        <li><a href="#" class="hover:text-white transition">Independent Endowment Program</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-slate-800 pt-8 text-xs text-center md:text-left flex flex-col md:flex-row justify-between items-center text-gray-500">
-                <p>&copy; <span id="footer-year"></span> The Global Chronicle. Integrated syndications of verified reporting. All rights reserved.</p>
-                <div class="space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white transition">Privacy Statement</a>
-                    <a href="#" class="hover:text-white transition">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition">Compliance Protocol</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Fact-Check Drawer / Modal -->
-    <div id="fact-drawer" class="fixed inset-0 z-50 hidden flex justify-end">
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeFactDrawer()"></div>
-        <div class="bg-brand-paper w-full max-w-lg h-full relative z-10 shadow-2xl overflow-y-auto flex flex-col border-l border-gray-300">
-            <!-- Header -->
-            <div class="p-6 bg-brand-dark text-white flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-shield-halved text-brand-gold text-xl"></i>
-                    <div>
-                        <h3 class="font-serif font-black text-lg">Fact Verification Portal</h3>
-                        <p class="text-[9px] font-mono tracking-wider text-green-400 uppercase">Status: Database Online & Verified</p>
-                    </div>
-                </div>
-                <button onclick="closeFactDrawer()" class="text-gray-400 hover:text-white transition">
-                    <i class="fas fa-xmark text-xl"></i>
-                </button>
-            </div>
-
-            <!-- Verification Card Content -->
-            <div id="drawer-content" class="p-6 flex-grow space-y-6">
-                <!-- Content will be injected dynamically -->
-            </div>
-
-            <!-- Footer -->
-            <div class="p-4 bg-gray-100 border-t border-gray-200 text-center">
-                <p class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">Independent Double-Blind Fact Verification Protocol</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Subscription Modal -->
-    <div id="sub-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center">
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/70 backdrop-blur" onclick="closeModal()"></div>
-        
-        <!-- Modal Content -->
-        <div class="bg-brand-paper rounded-2xl shadow-2xl relative z-10 w-full max-w-3xl overflow-hidden flex flex-col md:flex-row mx-4 border border-gray-300 animate-[fadeIn_0.3s_ease-out]">
-            <!-- Left Editorial Banner (Modal) -->
-            <div class="hidden md:block md:w-5/12 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80&w=600');">
-                <div class="absolute inset-0 bg-brand-dark/80 flex flex-col justify-end p-6 text-white">
-                    <span class="text-brand-gold text-xs font-mono font-bold uppercase tracking-wider mb-2">Support Verified Facts</span>
-                    <h3 class="font-serif font-bold text-lg leading-snug mb-2">"Independent journalism stands between public interest and disinformation."</h3>
-                    <p class="text-[10px] text-gray-400">By supporting The Global Chronicle, you provide real resources to verify critical global journalism.</p>
-                </div>
-            </div>
-            
-            <!-- Right Content (Modal) -->
-            <div class="w-full md:w-7/12 p-8 md:p-10 relative bg-brand-paper">
-                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
-                    <i class="fas fa-times text-lg"></i>
-                </button>
-                
-                <h2 class="font-serif text-3xl font-black mb-1">The Visionary Trust Plan</h2>
-                <p class="text-xs text-gray-500 mb-6 font-semibold">An absolute commitment to facts. Secure eight full years of verified news.</p>
-                
-                <div class="border-2 border-brand-gold rounded-xl p-5 mb-6 bg-yellow-50/40 relative">
-                    <div class="absolute -top-3 left-4 bg-brand-gold text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest">
-                        8-Year Inflation Lock
-                    </div>
-                    <div class="flex justify-between items-center mb-3 mt-1">
-                        <div>
-                            <span class="font-extrabold text-gray-900 text-sm block">Guaranteed Unlimited Access</span>
-                            <span class="text-[10px] text-gray-500">Includes complete archive and source dossiers</span>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-3xl font-black font-serif text-brand-gold">$45</span>
-                            <span class="text-gray-500 text-xs block">per year</span>
-                        </div>
-                    </div>
-                    <ul class="text-[11px] text-gray-700 space-y-2 mt-2 font-medium">
-                        <li><i class="fas fa-check-circle text-brand-gold mr-2"></i> Locks rate at $45/yr, fully avoiding pricing index adjustments.</li>
-                        <li><i class="fas fa-check-circle text-brand-gold mr-2"></i> Clean experience with no commercial tracking profiles.</li>
-                        <li><i class="fas fa-check-circle text-brand-gold mr-2"></i> Includes a complimentary secondary educational profile grant.</li>
-                    </ul>
-                    <div class="mt-4 pt-3 border-t border-yellow-200/60 text-center">
-                        <span class="text-[10px] text-gray-500 font-mono italic">Billed annually at $45. Total commitment lock.</span>
-                    </div>
-                </div>
-                
-                <a href="https://buy.stripe.com/test_8x2dRa2dnaJP1rV66h1Fe00" target="_blank" rel="noopener noreferrer" class="w-full bg-brand-dark hover:bg-black text-white font-extrabold py-3.5 rounded-lg transition duration-200 shadow-lg text-sm uppercase tracking-widest flex justify-center items-center group">
-                    <span>Proceed to Secure Checkout</span>
-                    <i class="fas fa-external-link-alt ml-2 text-xs group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></i>
-                </a>
-                
-                <p class="text-center text-[10px] text-gray-400 mt-4 leading-normal">
-                    Secure credit-card and bank transfers are processed with end-to-end AES-256 encryption. Cancel terms remain valid at any checkpoint.
-                </p>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Set dynamic dates
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const today = new Date();
-        document.getElementById('current-date').textContent = today.toLocaleDateString('en-US', dateOptions).toUpperCase();
-        document.getElementById('footer-year').textContent = today.getFullYear();
+        // Start from zero
+        let readers = 0;
+        let earnings = 0;
 
-        // High-Quality Verified Fact Database Sourced directly from Le Monde 2026/2025 releases
-        const verifiedDatabase = {
-            heatwave: {
-                title: "Western Europe Heat Dome and Meteorological Records",
-                topic: "Climate & Environmental Sovereignty",
-                source: "Le Monde (Sciences) & World Weather Attribution",
-                originalDate: "June 26-30, 2026",
-                verificationLevel: "100% Verified via Direct Sensor and Meteorological Transcripts",
-                investigators: "Le Monde Environmental Desk, Libération and Ouest-France",
-                verifiedFacts: [
-                    "<strong>All-time Highs:</strong> A localized high-pressure heat dome stalled over central and western France. Temperature records tumbled, peaking at 44.7°C in Herbiers, Vendée.",
-                    "<strong>Alert Status:</strong> Météo-France placed an unprecedented 72 mainland departments under red heatwave alerts during the peak index days of late June.",
-                    "<strong>Public Health Impact:</strong> Power grids experienced partial outages in Brittany, and health services in Paris noted a 15-20% jump in emergency respiratory and cardiac calls."
-                ]
-            },
-            popeai: {
-                title: "Vatican Encyclical 'Magnifica Humanitas' on AI",
-                topic: "Ecclesial Doctrine & Global Ethics",
-                source: "Vatican Press Bureau & Le Monde Europe Bureau",
-                originalDate: "June 27, 2026",
-                verificationLevel: "Factual Data Checked against Holy See Official Releases",
-                investigators: "Le Monde Vatican Bureau correspondents",
-                verifiedFacts: [
-                    "<strong>Encyclical Release:</strong> Pope Leo XIV officially promulgated <em>Magnifica Humanitas</em>, the first papal encyclical completely dedicated to setting ethical guidelines for AI development.",
-                    "<strong>Sovereign Human Mandate:</strong> The doctrine outlines that replacing critical human labor and decision-making capabilities with autonomous networks is fundamentally unethical.",
-                    "<strong>Defense Limitations:</strong> The document explicitly pleads for international bans on AI systems running autonomous lethal weapon configurations."
-                ]
-            },
-            worldcup: {
-                title: "World Cup 2026 Round of 32 Standings",
-                topic: "Global Sports Desk",
-                source: "Le Monde Sport Bureau & FIFA Communications",
-                originalDate: "June 30, 2026",
-                verificationLevel: "Factual Match Schedules Checked against Arena Registers",
-                investigators: "Le Monde Sports Desk correspondents",
-                verifiedFacts: [
-                    "<strong>Elimination Play:</strong> Today marks the high-stakes matchups in the Round of 32 including France versus Sweden scheduled to play at the Dallas Cowboys Arena in Arlington, Texas.",
-                    "<strong>Player Status:</strong> France continues to rely on Kylian Mbappé, Michael Olise, and Ousmane Dembélé to drive offensive lines despite defensive restructuring.",
-                    "<strong>Broader Matches:</strong> Other major Round of 32 brackets playing today include Norway versus Ivory Coast and Mexico against Ecuador."
-                ]
-            },
-            totalfuel: {
-                title: "TotalEnergies Fuel Cap & Summer Departure Strategies",
-                topic: "Energy Markets & Finance",
-                source: "Le Monde (Economie) & Corporate Press Release Desks",
-                originalDate: "June 30, 2026",
-                verificationLevel: "Fact-Checked with Direct CEO Audits",
-                investigators: "Energy Policy Analysis Group",
-                verifiedFacts: [
-                    "<strong>Capping Operations:</strong> TotalEnergies Chief Executive Patrick Pouyanné confirmed keeping the €1.99 per liter fuel cap on rural stations through July and August.",
-                    "<strong>Network Size:</strong> The capping initiative applies specifically to 1,200 rural service points alongside key highway points during peak weekend traffic.",
-                    "<strong>Financial Impact:</strong> This strategy was refined in coordination with falling global crude oil prices and national treasury budget deliberations."
-                ]
-            }
-        };
-
-        // UI Logic for Fact-Checking Drawer
-        const drawer = document.getElementById('fact-drawer');
-        const drawerContent = document.getElementById('drawer-content');
-
-        function triggerVerification(key) {
-            const data = verifiedDatabase[key];
-            if (!data) return;
-
-            // Generate verified list elements
-            let factsHtml = '';
-            data.verifiedFacts.forEach(fact => {
-                factsHtml += `
-                    <li class="flex items-start space-x-3 text-xs text-gray-700 leading-relaxed bg-white p-3.5 rounded-lg border border-gray-200 shadow-sm">
-                        <span class="text-emerald-600 mt-0.5"><i class="fas fa-circle-check"></i></span>
-                        <span>${fact}</span>
-                    </li>
-                `;
-            });
-
-            drawerContent.innerHTML = `
-                <div class="space-y-4">
-                    <div>
-                        <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-brand-gold bg-yellow-50 px-2 py-1 rounded border border-yellow-200">
-                            ${data.topic}
-                        </span>
-                        <h4 class="font-serif font-black text-xl text-brand-dark mt-2">${data.title}</h4>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs">
-                        <div>
-                            <span class="text-gray-400 font-mono text-[9px] uppercase block">Primary Source</span>
-                            <strong class="text-brand-dark">${data.source}</strong>
-                        </div>
-                        <div>
-                            <span class="text-gray-400 font-mono text-[9px] uppercase block">Original Date</span>
-                            <strong class="text-brand-dark">${data.originalDate}</strong>
-                        </div>
-                    </div>
-
-                    <div class="bg-emerald-50 border border-emerald-200/60 rounded-lg p-3.5 text-xs text-emerald-900">
-                        <div class="flex items-center space-x-2 font-bold mb-1">
-                            <i class="fas fa-fingerprint text-emerald-600"></i>
-                            <span>Verification Level:</span>
-                        </div>
-                        <p class="font-semibold text-emerald-700">${data.verificationLevel}</p>
-                    </div>
-
-                    <div>
-                        <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-gray-500 mb-2">Verified Data Points</h5>
-                        <ul class="space-y-3">
-                            ${factsHtml}
-                        </ul>
-                    </div>
-
-                    <div class="pt-4 border-t border-gray-200 text-[10px] text-gray-400">
-                        <strong>Co-Investigating Editors:</strong> ${data.investigators}
-                    </div>
-                </div>
-            `;
-
-            drawer.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        function updateUI() {
+            // Formula: (readers / 10) * 15
+            earnings = (readers / 10) * 15;
+            document.getElementById('reader-count').innerText = readers;
+            document.getElementById('earnings-display').innerText = earnings.toFixed(2);
         }
 
-        function closeFactDrawer() {
-            drawer.classList.add('hidden');
-            document.body.style.overflow = 'auto'; // Re-enable background scrolling
-        }
-
-        // Open general verification policy guide
-        function openVerificationGuide() {
-            drawerContent.innerHTML = `
-                <div class="space-y-5">
-                    <div class="text-center">
-                        <i class="fas fa-shield-halved text-brand-gold text-5xl mb-3 animate-pulse"></i>
-                        <h4 class="font-serif font-black text-2xl text-brand-dark">Our Verification Charter</h4>
-                        <p class="text-xs text-gray-500 mt-1">Establishing trusts through absolute transparency.</p>
-                    </div>
-
-                    <div class="space-y-4 text-xs text-gray-600 leading-relaxed">
-                        <p>At <strong>The Global Chronicle</strong>, we realize that democracy and consumer confidence relies entirely on verified, real data. Our verification protocol mandates:</p>
-                        
-                        <div class="p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
-                            <strong class="text-brand-dark block mb-1">1. Direct Syndication Audits</strong>
-                            Every article originating from partner syndicates like <em>Le Monde</em> is cross-checked using official, recorded press pool transcripts and public documents.
-                        </div>
-
-                        <div class="p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
-                            <strong class="text-brand-dark block mb-1">2. Verification Ledger Disclosure</strong>
-                            We publicly outline every verified data point, enabling readers to inspect primary source timelines, reporting bureaus, and co-investigators directly in real time.
-                        </div>
-
-                        <div class="p-3 bg-white border border-gray-200 rounded-lg shadow-sm">
-                            <strong class="text-brand-dark block mb-1">3. Editorial Autonomy</strong>
-                            Our 8-Year Visionary Plan ($45/yr) is funded purely through individual subscriptions, completely preventing outside corporate interests or advertising models from impacting coverage integrity.
-                        </div>
-                    </div>
-                </div>
-            `;
-            drawer.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Subscription Modal Logic
-        const modal = document.getElementById('sub-modal');
+        // Simulate reader traffic incrementing every few seconds
+        setInterval(() => {
+            // Increase reader count randomly between 0 and 2
+            readers += Math.floor(Math.random() * 3);
+            updateUI();
+        }, 5000);
         
-        function openModal() {
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeModal();
-                closeFactDrawer();
-            }
-        });
+        // Initial call
+        updateUI();
     </script>
 </body>
 </html>
