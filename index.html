@@ -18,18 +18,18 @@
             padding: 0;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.7;
         }
         header {
             background-color: var(--primary);
             color: white;
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             border-bottom: 5px solid var(--accent);
         }
         header h1 {
             margin: 0;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-family: 'Times New Roman', serif;
             letter-spacing: 2px;
         }
@@ -42,81 +42,108 @@
             background-color: #2d3748;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            padding: 0.75rem;
+            gap: 2rem;
+            padding: 0.9rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         .nav-bar a {
             color: white;
             text-decoration: none;
             font-weight: bold;
             font-family: sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
         }
         .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 2.5rem;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .container { grid-template-columns: 1fr; }
         }
         .main-content {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 3.5rem;
         }
         section {
             background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary);
+            padding: 2.5rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border-top: 5px solid var(--primary);
         }
         section h2 {
             margin-top: 0;
             font-family: 'Times New Roman', serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
             color: var(--primary);
+            line-height: 1.2;
         }
         .meta-info {
             font-size: 0.85rem;
             color: #718096;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-family: sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        blockquote {
+            font-style: italic;
+            border-left: 4px solid var(--accent);
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+            color: #4a5568;
+            font-size: 1.1rem;
+            background: #fffaf0;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        p {
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+        .dashboard-wrapper {
+            position: sticky;
+            top: 5rem;
         }
         .dashboard {
             background: #2d3748;
             color: white;
-            padding: 1.5rem;
-            border-radius: 6px;
-            position: sticky;
-            top: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         .dashboard h3 {
             margin-top: 0;
             color: #ecc94b;
             font-family: sans-serif;
             text-transform: uppercase;
-            font-size: 1rem;
+            font-size: 1.1rem;
             letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 0.75rem;
         }
         .stat-box {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(255,255,255,0.1);
-            padding: 0.75rem 1rem;
-            border-radius: 4px;
-            margin-bottom: 1rem;
+            background: rgba(255,255,255,0.07);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(255,255,255,0.05);
         }
         .stat-val {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: bold;
             color: #fff;
             font-family: sans-serif;
@@ -126,22 +153,28 @@
             background: #ecc94b;
             color: #1a202c;
             border: none;
-            padding: 0.75rem;
+            padding: 1rem;
             font-weight: bold;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             font-family: sans-serif;
-            transition: background 0.2s;
+            font-size: 1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .btn-simulate:hover { background: #d69e2e; }
+        .btn-simulate:hover { 
+            background: #d69e2e;
+            transform: translateY(-1px);
+        }
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 1rem;
             background: var(--primary);
             color: white;
-            margin-top: 4rem;
+            margin-top: 6rem;
             font-family: sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--accent);
         }
     </style>
 </head>
@@ -163,57 +196,90 @@
             
             <!-- POLITICS SECTION -->
             <section id="politics">
-                <h2>POLITICS: Europe's Shifting Power Structures</h2>
-                <div class="meta-info">By Marcus Vance | Political Correspondent</div>
-                <p>As the second half of 2026 begins, parliamentary alliances across Europe are undergoing profound structural transformations. Recent legislative updates reveal a growing push toward decentralization and localized governance, challenging traditional pan-European frameworks.</p>
-                <p>In Brussels, debates have intensified over structural budgetary allocations, with coalitions fracturing over localized infrastructure spending. Analysts indicate that these internal rifts are likely to stall major regulatory agreements until late autumn, signaling a transitional era in continental policy enforcement.</p>
+                <h2>POLITICS: Europe's Shifting Power Structures and the Rise of Decentralized Coalitions</h2>
+                <div class="meta-info">By Marcus Vance | Senior Political Correspondent</div>
+                
+                <p>The dawn of July 2026 marks an unprecedented realignment in European legislative governance. For decades, the steady march of Brussels-led centralization dictated the baseline of economic and structural rules for member states. However, recent weeks have exposed cracks in this monolithic framework as domestic political realities collide violently with transnational mandates.</p>
+                
+                <p>The primary battleground has been the allocation of the structural infrastructure funds, with localized blocks aggressively demanding veto power over regional development budgets. Traditional coalition blocs—which historically stabilized shifting majorities—are fracturing along regionalist lines, leaving major legislative packages on the brink of collapse.</p>
+                
+                <blockquote>
+                    "What we are witnessing is not a temporary gridlock; it is a fundamental renegotiation of federalist power structures. The assumption that regional bodies would indefinitely surrender regulatory fiscal powers to central committees has been definitively disproven by this current session."
+                    <br><small style="font-family:sans-serif; font-size:0.8rem;">— Dr. Eleni Karas, Director of the European Policy Institute</small>
+                </blockquote>
+
+                <p>At the center of this legislative storm is a bitter disagreement regarding localized green energy infrastructure grids. Under previous frameworks, municipal bodies were expected to absorb massive upfront capital expenses while waiting for multi-year fiscal reimbursements from central funds. Local authorities are now flatly refusing to ratify broader fiscal pacts without immediate, guaranteed funding pathways controlled entirely at the provincial level.</p>
+                
+                <p>Political strategists suggest that this gridlock will completely halt major international commercial and supply-chain regulatory updates until at least late autumn. As individual sovereign parliaments test the boundaries of their legislative independence, the dynamic within the continent will drift toward decentralized, fluid negotiation rather than top-down executive policy deployment.</p>
             </section>
 
             <!-- OPINION SECTION -->
             <section id="opinion">
-                <h2>OPINION: How Leftist Dutch Parties Influence Economic Frameworks</h2>
-                <div class="meta-info">By Dr. Anika de Jong | Guest Columnist</div>
-                <p>The contemporary economic shift within the Netherlands highlights a remarkable trend: how progressive coalitions can fundamentally reshape market realities without holding an outright majority. Leftist Dutch parties have successfully altered national priorities by anchoring environmental sustainability metrics directly into corporate fiscal policies.</p>
-                <p>By executing targeted political pressure, these factions have effectively linked corporate tax breaks to strict green targets. This strategy serves as an active template for surrounding European nations, proving that strategic legislative positioning can turn grassroots environmental objectives into enforceable economic directives.</p>
+                <h2>OPINION: How Leftist Dutch Parties Influence and Reshape Continental Economic Frameworks</h2>
+                <div class="meta-info">By Dr. Anika de Jong | Academic Guest Columnist</div>
+                
+                <p>The contemporary transformation of fiscal logic within northern Europe offers a vital lesson in political strategy: raw legislative seat counts do not entirely dictate a faction's true power to reform markets. The recent maneuvering of progressive and leftist Dutch coalitions demonstrates that a highly focused, ideologically disciplined minority can effectively rewrite national economic priorities from the sidelines.</p>
+                
+                <p>By shifting their strategy away from sweeping ideological debates and focusing strictly on granular, legalistic mechanisms, these Dutch parties have managed to anchor strict environmental and social sustainability metrics directly into corporate fiscal policies. They achieved this by identifying critical legislative choke points where centrist and ruling parties desperately needed minor votes to pass routine budgetary laws.</p>
+                
+                <blockquote>
+                    "The traditional playbook dictated that you win an outright majority before attempting deep structural reforms. The Dutch model proves that if you control the legalistic levers of corporate tax structures, you can force the private sector to execute your environmental goals without ever occupying the prime minister's office."
+                    <br><small style="font-family:sans-serif; font-size:0.8rem;">— Henrik van der Meer, Senior Fellow in Macroeconomics at Rotterdam School of Economics</small>
+                </blockquote>
+
+                <p>Under this newly deployed system, corporate tax exemptions are no longer tied purely to capital reinvestment or job creation metrics. Instead, they are directly contingent upon verifiable, year-over-year reductions in supply-chain emissions and localized resource consumption. If a major multi-national enterprise fails to meet these micro-level sustainability targets, their marginal tax liability automatically escalates, rendering non-compliance an absolute financial disaster.</p>
+                
+                <p>This localized legislative experiment is quickly spreading beyond the borders of the Netherlands. Surrounding nations, observing the operational stability of this policy, are beginning to introduce matching amendments in their respective chambers. By turning grassroots ecological values into hard corporate survival metrics, these leftist coalitions have laid down a blueprint that will heavily shape the broader regulatory landscape for years to come.</p>
             </section>
 
             <!-- SPORTS SECTION -->
             <section id="sports">
-                <h2>SPORT: The Technical Evolution of Global Football</h2>
-                <div class="meta-info">By Tariq Amrani | Sports Desk</div>
-                <p>The knockout stages of the 2026 World Cup are demonstrating a sharp departure from traditional tactical setups. Global national squads are moving away from rigid formations, prioritizing highly adaptive, position-fluid defensive structures that compress midfield passing lanes.</p>
-                <p>Sports analytics systems report record-breaking running distances across all opening matches, reflecting an extreme physical baseline requirement for modern competitive squads. As elite teams prepare for upcoming elimination fixtures, individual data-tracking and high-intensity structural setups remain the defining factors of victory.</p>
+                <h2>SPORT: The Technical Evolution and Tactical Compression of Modern Football</h2>
+                <div class="meta-info">By Tariq Amrani | Football Tactics & Data Analyst</div>
+                
+                <p>As the knockout matches of the 2026 World Cup unfold across global screens, football analysts and elite coaches are documenting a permanent tactical paradigm shift. The era of loose, creative attacking systems operating within rigid, highly predictable formations has officially come to a close. In its place stands a hyper-disciplined, position-fluid defensive philosophy built entirely around physical endurance and spatial compression.</p>
+                
+                <p>Modern elite tactical setups are no longer concerned with holding static positions on a pitch map. Instead, out-of-possession structures operate like a single, coordinated organism. The goal is to aggressively compress the distance between defensive lines and midfield anchors, entirely suffocating passing lanes and preventing playmaker midfielders from turning with the ball.</p>
+                
+                <blockquote>
+                    "The modern pitch has never felt smaller for an attacking player. If you cannot process spatial data and deliver a precise pass under intense physical pressure within 0.8 seconds, the defensive block will collapse around you and trigger an instant, lethal counter-offensive."
+                    <br><small style="font-family:sans-serif; font-size:0.8rem;">— Coach Jean-Pierre Alarie, Elite Technical Instructor</small>
+                </blockquote>
+
+                <p>Advanced real-time tracking data across the tournament confirms this brutal physical reality. Squads are setting all-time high records for cumulative high-intensity running distances, with midfielders routinely covering massive ground just to maintain the defensive block's structural integrity. Teams that lack this intense baseline conditioning are being methodically exposed and eliminated in the final twenty minutes of matches.</p>
+                
+                <p>As the surviving national teams prepare for their crucial upcoming elimination fixtures, it is abundantly clear that the squads relying purely on individual star power are struggling. The tournament will ultimately belong to whichever manager can sustain perfect defensive coordination and absolute tactical discipline under the crushing weight of elite tournament pressure.</p>
             </section>
 
         </main>
 
         <!-- SIDEBAR REWARD DASHBOARD -->
-        <aside>
+        <aside class="dashboard-wrapper">
             <div class="dashboard">
                 <h3>Reader Reward Portal</h3>
-                <p style="font-size: 0.85rem; margin-bottom: 1.5rem; color: #cbd5e0;">Earn 15 DHS dynamically for every 10 active readers registered on your platform.</p>
+                <p style="font-size: 0.85rem; margin-bottom: 1.5rem; color: #cbd5e0; line-height: 1.5;">Earn 15 DHS dynamically for every 10 active readers registered on your platform.</p>
                 
                 <div class="stat-box">
-                    <span>Total Readers:</span>
+                    <span style="font-family: sans-serif; font-size: 0.9rem; color: #cbd5e0;">Total Readers:</span>
                     <span id="readerCount" class="stat-val">0</span>
                 </div>
                 
                 <div class="stat-box">
-                    <span>Total Earnings:</span>
+                    <span style="font-family: sans-serif; font-size: 0.9rem; color: #cbd5e0;">Total Earnings:</span>
                     <span id="earningCount" class="stat-val">0 DHS</span>
                 </div>
 
-                <button class="btn-simulate" onclick="simulateTraffic()">Simulate 10 Readers</button>
+                <button class="btn-simulate"
             </div>
         </aside>
     </div>
 
     <footer>
-        &copy; 2026 The Global Chronicle. All rights reserved. Structured Reader Payout System V1.2.
+        &copy; 2026 The Global Chronicle. All rights reserved. Professional Reader Tracking Framework V1.3.0.
     </footer>
 
     <script>
-        // Initializing both counts strictly to zero
+        // System explicitly reset to zero for a clean deployment launch
         let readers = 0;
         let earnings = 0;
 
