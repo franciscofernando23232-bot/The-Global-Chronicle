@@ -1,104 +1,229 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Global Chronicle | July 1, 2026</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>The Global Chronicle</title>
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        :root {
+            --primary: #1a202c;
+            --accent: #b7791f;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --text: #2d3748;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 5px solid var(--accent);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+            font-family: 'Times New Roman', serif;
+            letter-spacing: 2px;
+        }
+        .date {
+            margin-top: 0.5rem;
+            font-style: italic;
+            color: #cbd5e0;
+        }
+        .nav-bar {
+            background-color: #2d3748;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 0.75rem;
+        }
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: sans-serif;
+            font-size: 0.9rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+        }
+        section h2 {
+            margin-top: 0;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        .meta-info {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 1rem;
+            font-family: sans-serif;
+        }
+        .dashboard {
+            background: #2d3748;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            position: sticky;
+            top: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);
+        }
+        .dashboard h3 {
+            margin-top: 0;
+            color: #ecc94b;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        .stat-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #fff;
+            font-family: sans-serif;
+        }
+        .btn-simulate {
+            width: 100%;
+            background: #ecc94b;
+            color: #1a202c;
+            border: none;
+            padding: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: sans-serif;
+            transition: background 0.2s;
+        }
+        .btn-simulate:hover { background: #d69e2e; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--primary);
+            color: white;
+            margin-top: 4rem;
+            font-family: sans-serif;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
 
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-3xl font-bold tracking-tight text-red-900 uppercase">The Global Chronicle</h1>
-            <div id="reward-badge" class="bg-green-100 border border-green-500 px-4 py-2 rounded-lg text-sm font-semibold">
-                Earnings: <span id="earnings-display">0.00</span> DHS
-            </div>
-        </div>
-    </nav>
+    <header>
+        <h1>THE GLOBAL CHRONICLE</h1>
+        <div class="date">Wednesday, July 1, 2026</div>
+    </header>
 
-    <main class="max-w-6xl mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="nav-bar">
+        <a href="#politics">Politics</a>
+        <a href="#opinion">Opinion & Analysis</a>
+        <a href="#sports">Sport</a>
+    </div>
+
+    <div class="container">
+        <main class="main-content">
             
-            <div class="lg:col-span-2 space-y-12">
-                <!-- Politics -->
-                <section>
-                    <h2 class="text-4xl border-b-4 border-gray-900 pb-2 mb-6">Politics</h2>
-                    <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h3 class="text-2xl font-bold mb-4">The Shifting European Political Landscape</h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            The mid-2026 political horizon across Europe has been characterized by intense fragmentation and a notable pivot toward nationalist agendas in domestic parliaments. Brussels remains in a state of flux as coalition building has become increasingly complex. The recent legislative paralysis in the European Parliament has raised alarms regarding the bloc's ability to coordinate on pan-European defense and fiscal policy...
-                        </p>
-                        <p class="text-gray-700 leading-relaxed">
-                            Analysts suggest that the upcoming autumn summits will be decisive for the future of the eurozone, with significant pressures being applied to maintain the currency union against mounting populism in rural constituencies across central and eastern regions.
-                        </p>
-                    </article>
-                </section>
+            <!-- POLITICS SECTION -->
+            <section id="politics">
+                <h2>POLITICS: Europe's Shifting Power Structures</h2>
+                <div class="meta-info">By Marcus Vance | Political Correspondent</div>
+                <p>As the second half of 2026 begins, parliamentary alliances across Europe are undergoing profound structural transformations. Recent legislative updates reveal a growing push toward decentralization and localized governance, challenging traditional pan-European frameworks.</p>
+                <p>In Brussels, debates have intensified over structural budgetary allocations, with coalitions fracturing over localized infrastructure spending. Analysts indicate that these internal rifts are likely to stall major regulatory agreements until late autumn, signaling a transitional era in continental policy enforcement.</p>
+            </section>
 
-                <!-- Opinion -->
-                <section>
-                    <h2 class="text-4xl border-b-4 border-gray-900 pb-2 mb-6">Opinion & Analysis</h2>
-                    <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h3 class="text-2xl font-bold mb-4">The Polder Model in Crisis: Dutch Leftist Parties and Economic Influence</h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            For decades, the Dutch "Polder Model" relied on consensus-building between labor, capital, and the state. However, the recent resurgence of leftist parties has signaled a tectonic shift in how economic policy is viewed in the Netherlands. By aggressively challenging traditional market liberal ideologies, these parties are advocating for a re-industrialization strategy that prioritizes high-wage security over market flexibility.
-                        </p>
-                        <p class="text-gray-700 leading-relaxed">
-                            Critics argue that this leftist pivot threatens the very flexibility that made the Dutch economy a global powerhouse. Yet, proponents maintain that without a stronger social safety net and an active industrial policy, the Netherlands risks falling behind in the global green technology race. This tension is currently defining the legislative agenda in The Hague, setting the stage for one of the most volatile budgetary seasons in recent memory.
-                        </p>
-                    </article>
-                </section>
+            <!-- OPINION SECTION -->
+            <section id="opinion">
+                <h2>OPINION: How Leftist Dutch Parties Influence Economic Frameworks</h2>
+                <div class="meta-info">By Dr. Anika de Jong | Guest Columnist</div>
+                <p>The contemporary economic shift within the Netherlands highlights a remarkable trend: how progressive coalitions can fundamentally reshape market realities without holding an outright majority. Leftist Dutch parties have successfully altered national priorities by anchoring environmental sustainability metrics directly into corporate fiscal policies.</p>
+                <p>By executing targeted political pressure, these factions have effectively linked corporate tax breaks to strict green targets. This strategy serves as an active template for surrounding European nations, proving that strategic legislative positioning can turn grassroots environmental objectives into enforceable economic directives.</p>
+            </section>
 
-                <!-- Sport -->
-                <section>
-                    <h2 class="text-4xl border-b-4 border-gray-900 pb-2 mb-6">Sport</h2>
-                    <article class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h3 class="text-2xl font-bold mb-4">World Cup 2026: The Underdog Narrative</h3>
-                        <p class="text-gray-700 leading-relaxed">
-                            As the World Cup 2026 enters the knockout stages, the narrative of the tournament has shifted toward the remarkable success of "second-tier" nations. Tactical rigidity has been traded for fluid, high-pressing formations that have left seasoned powerhouses scrambling for composure. Today's match reports highlight a series of upsets, particularly the underdog performance against the tournament favorites, which has left stadiums in shock and fans in absolute delirium.
-                        </p>
-                    </article>
-                </section>
-            </div>
+            <!-- SPORTS SECTION -->
+            <section id="sports">
+                <h2>SPORT: The Technical Evolution of Global Football</h2>
+                <div class="meta-info">By Tariq Amrani | Sports Desk</div>
+                <p>The knockout stages of the 2026 World Cup are demonstrating a sharp departure from traditional tactical setups. Global national squads are moving away from rigid formations, prioritizing highly adaptive, position-fluid defensive structures that compress midfield passing lanes.</p>
+                <p>Sports analytics systems report record-breaking running distances across all opening matches, reflecting an extreme physical baseline requirement for modern competitive squads. As elite teams prepare for upcoming elimination fixtures, individual data-tracking and high-intensity structural setups remain the defining factors of victory.</p>
+            </section>
 
-            <!-- Sidebar -->
-            <aside class="space-y-8">
-                <div class="bg-gray-900 text-white p-6 rounded-xl">
-                    <h3 class="text-xl font-bold mb-4">Reader Rewards</h3>
-                    <p class="text-sm opacity-80 mb-4">You earn 15 DHS for every 10 readers detected.</p>
-                    <div class="text-5xl font-bold mb-2" id="reader-count">0</div>
-                    <p class="text-sm uppercase tracking-widest font-semibold">Live Reader Count</p>
+        </main>
+
+        <!-- SIDEBAR REWARD DASHBOARD -->
+        <aside>
+            <div class="dashboard">
+                <h3>Reader Reward Portal</h3>
+                <p style="font-size: 0.85rem; margin-bottom: 1.5rem; color: #cbd5e0;">Earn 15 DHS dynamically for every 10 active readers registered on your platform.</p>
+                
+                <div class="stat-box">
+                    <span>Total Readers:</span>
+                    <span id="readerCount" class="stat-val">0</span>
                 </div>
-            </aside>
-        </div>
-    </main>
+                
+                <div class="stat-box">
+                    <span>Total Earnings:</span>
+                    <span id="earningCount" class="stat-val">0 DHS</span>
+                </div>
+
+                <button class="btn-simulate" onclick="simulateTraffic()">Simulate 10 Readers</button>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        &copy; 2026 The Global Chronicle. All rights reserved. Structured Reader Payout System V1.2.
+    </footer>
 
     <script>
-        // Start from zero
+        // Initializing both counts strictly to zero
         let readers = 0;
         let earnings = 0;
 
-        function updateUI() {
-            // Formula: (readers / 10) * 15
+        function simulateTraffic() {
+            readers += 10;
             earnings = (readers / 10) * 15;
-            document.getElementById('reader-count').innerText = readers;
-            document.getElementById('earnings-display').innerText = earnings.toFixed(2);
+            
+            document.getElementById('readerCount').innerText = readers;
+            document.getElementById('earningCount').innerText = earnings + " DHS";
         }
-
-        // Simulate reader traffic incrementing every few seconds
-        setInterval(() => {
-            // Increase reader count randomly between 0 and 2
-            readers += Math.floor(Math.random() * 3);
-            updateUI();
-        }, 5000);
-        
-        // Initial call
-        updateUI();
     </script>
 </body>
 </html>
